@@ -1,0 +1,17 @@
+def create_duration_json(duration_input):
+    months = convert_to_months(duration_input)
+    years = months / 12
+    
+    duration_data = {
+        "input": duration_input,
+        "total_months": months,
+        "years": years,
+        "formatted": f"{int(years)} years and {months % 12} months"
+    }
+    
+    return json.dumps(duration_data, indent=2)
+
+duration_input = input("Enter the duration: (e.g., 2 years 3 months or 2 years or 3 months) ")
+json_output = create_duration_json(duration_input)
+print("\nJSON Output:")
+print(json_output)
